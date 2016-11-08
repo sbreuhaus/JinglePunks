@@ -7,6 +7,16 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-#Song.create!([
-#  {song: "Broken Just Fine-JP", tags: "Singer-Songwriter,Light,Playful,bouncy"}
-#  ])
+require 'csv'
+
+csv_text = File.read(Rails.root.join('lib', 'seeds', '1000 cues with tags.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+csv.each do |row|
+  s = Song.new
+  s.save
+  puts "#{s.song}, #{s.tags} have been saved"
+end
+
+
+
+puts "There are now #{Song.count} rows in the transactions table"
