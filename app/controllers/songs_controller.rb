@@ -1,11 +1,18 @@
 class SongsController < ApplicationController
   before_action :set_song, only: [:show, :edit, :update, :destroy]
+
+
   def home
   end
   # GET /songs
   # GET /songs.json
   def index
     @songs = Song.all
+    if params[:search]
+      @songs = Song.search(params[:search]).order("created_at DESC")
+    else
+      @songs = Song.all.order('created_at DESC')
+    end
   end
 
   # GET /songs/1
@@ -70,6 +77,6 @@ class SongsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def song_params
-      params.require(:song).permit(:song, :tags)
+      params.require(:name).permit(:name, :tags)
     end
 end

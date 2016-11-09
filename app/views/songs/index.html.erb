@@ -1,6 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Songs</h1>
+<h1>Search Songs</h1>
+
+<%= form_tag(songs_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+  <%= submit_tag "Search" %>
+  <%= link_to 'clear search', songs_path %>
+<% end %>
+
 
 <table>
   <thead>
@@ -23,7 +30,6 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
 
 <%= link_to 'New Song', new_song_path %>
