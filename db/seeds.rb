@@ -17,9 +17,3 @@ csv.each do |row|
   s.tags = row['tags']
   s.save!
 end
-#puts "Ther are now #{Song.count} rows in the transactions table"
-
-#Song.create!([
-#  {song:"Broken Just Fine-JP", tags:"Singer-Songwriter,Light,Playful,bouncy"},
-#  {song:"Nightmares To Dreams-JP", tags:"Dark,Worried,Sad,Edgy"}
-#  ])

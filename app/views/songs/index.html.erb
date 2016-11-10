@@ -1,35 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Search Songs</h1>
+<h1 class="page-title">Search songs by tag names</h1>
 
-<%= form_tag(songs_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
-  <%= submit_tag "Search" %>
-  <%= link_to 'clear search', songs_path %>
-<% end %>
-
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Tags</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @songs.each do |song| %>
-      <tr>
-        <td><%= song.name %></td>
-        <td><%= song.tags %></td>
-        <td><%= link_to 'Show', song %></td>
-        <td><%= link_to 'Edit', edit_song_path(song) %></td>
-        <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
-
+<%= render 'songs/song' %>
+<!--
 <%= link_to 'New Song', new_song_path %>
